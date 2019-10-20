@@ -130,14 +130,14 @@
                 <input class="input-text" type="text" name="category" placeholder="Category"><br>
                 <input class="input-text" type="number" name="number" placeholder="Number of Items"><br>
                 <input class="input-text" type="number" name="price" placeholder="Price"><br>
-                <button type="submit" class="submit-but">Submit</button>
+                <input type="submit" name="submit" class="submit-but" value="Submit">
             </form>
 
         </div>
         <div class="output">
             <?php
             include "./db.php";
-
+            if(isset($_POST['submit'])){
             $name = $_POST["name"];
             $category = $_POST["category"];
             $number = intval($_POST["number"]);
@@ -147,7 +147,7 @@
             if ($conn->query($sql) === TRUE) {
                 echo "New record created successfully";
             }
-
+        }
             $conn->close();
             ?>
             

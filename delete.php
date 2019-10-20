@@ -128,12 +128,13 @@
             <hr style="margin: 10px;">
             <form action="./delete.php" method="post">
                 <input class="input-text" type="text" name="name" placeholder="Name or Category"><br>
-                <button type="submit" class="submit-but">Delete Item</button>
+                <input type="submit" name="submit" class="submit-but" value="Delete Item">
             </form>
         </div>
         <div class="output">
             <?php
             include "./db.php";
+            if(isset($_POST['submit'])) {
             $name = $_POST["name"];
             $sql = "DELETE FROM inventory WHERE name='$name' OR category='$name'";
 
@@ -142,6 +143,7 @@
             } else {
                 echo "Error deleting record: " . $conn->error;
             }
+        }
             ?>
         </div>
     </div>

@@ -127,7 +127,7 @@
             <hr style="margin: 10px;">
             <form action="./search.php" method="post">
                 <input class="input-text" type="text" name="name" placeholder="Name or Category"><br>
-                <button type="submit" class="submit-but">Search</button>
+                <input type="submit" name="submit" class="submit-but" value="Search">
             </form>
             <hr style="margin: 10px;">
             <table class="search-table">
@@ -139,7 +139,7 @@
                     <td class="head-font">Price</td>
                 </tr>
                 <?php include "./db.php";
-
+                if(isset($_POST['submit'])){
                 $name = $_POST["name"];
                 
                 $sql = "SELECT * FROM inventory where name='$name' OR category='$name'";
@@ -160,7 +160,7 @@
                     echo "0 results";
                 }
                 $conn->close();
-
+            }
                 ?>
                 
             </table>
